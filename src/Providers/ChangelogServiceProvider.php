@@ -52,7 +52,7 @@ class ChangelogServiceProvider extends BasePluginServiceProvider
     protected function routeDescriptions()
     {
         return [
-            'changelog.index' => 'changelog::messages.title',
+            'changelog.index' => trans('changelog::messages.title'),
         ];
     }
 
@@ -65,8 +65,8 @@ class ChangelogServiceProvider extends BasePluginServiceProvider
     {
         return [
             'changelog' => [
-                'name' => 'changelog::admin.nav.title',
-                'icon' => 'fas fa-clipboard-list',
+                'name' => trans('changelog::admin.nav.title'),
+                'icon' => 'bi bi-list-check',
                 'route' => 'changelog.admin.updates.index',
                 'permission' => 'changelog.admin',
             ],

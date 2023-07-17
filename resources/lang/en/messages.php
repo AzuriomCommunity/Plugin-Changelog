@@ -10,5 +10,5 @@ return [
         'empty' => 'This category is empty.',
     ],
     'home' => 'All Updates',
-    'changelog-empty' => 'The changelog is empty.',
+    'empty' => 'The changelog is empty.',
 ];

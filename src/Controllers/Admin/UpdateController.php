@@ -45,7 +45,7 @@ class UpdateController extends Controller
         Update::create($request->validated());
 
         return redirect()->route('changelog.admin.updates.index')
-            ->with('success', trans('changelog::admin.updates.status.created'));
+            ->with('success', trans('messages.status.success'));
     }
 
     /**
@@ -74,7 +74,7 @@ class UpdateController extends Controller
         $update->update($request->validated());
 
         return redirect()->route('changelog.admin.updates.index')
-            ->with('success', trans('changelog::admin.updates.status.updated'));
+            ->with('success', trans('messages.status.success'));
     }
 
     /**
@@ -90,6 +90,6 @@ class UpdateController extends Controller
         $update->delete();
 
         return redirect()->route('changelog.admin.updates.index')
-            ->with('success', trans('changelog::admin.updates.status.deleted'));
+            ->with('success', trans('messages.status.success'));
     }
 }

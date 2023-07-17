@@ -9,24 +9,14 @@ return [
     'categories' => [
         'title' => 'Categories',
         'nothing' => 'Please first add categories to add updates.',
-        'title-create' => 'Add category',
-        'title-edit' => 'Edit category',
-        'status' => [
-            'created' => 'Category created.',
-            'updated' => 'Category updated.',
-            'order-updated' => 'Categories order updated.',
-            'deleted' => 'Category deleted.',
-        ],
+        'create' => 'Add category',
+        'edit' => 'Edit category',
+        'updated' => 'Categories order updated.',
     ],
     'updates' => [
         'title' => 'Updates',
-        'title-create' => 'Add update',
-        'title-edit' => 'Edit update',
-        'status' => [
-            'created' => 'Update created.',
-            'updated' => 'Update updated.',
-            'deleted' => 'Update deleted.',
-        ],
+        'create' => 'Add update',
+        'edit' => 'Edit update',
     ],
 
     'permissions' => [

@@ -2,14 +2,6 @@
 
 @section('title', trans('changelog::admin.title'))
 
-@push('styles')
-    <style>
-        #categories > .sortable-dropdown {
-            padding-bottom: 1rem;
-        }
-    </style>
-@endpush
-
 @push('footer-scripts')
     <script src="{{ asset('vendor/sortablejs/Sortable.min.js') }}"></script>
     <script>
@@ -66,14 +58,13 @@
                 @each('changelog::admin.categories._category', $categories, 'category')
             </ol>
 
-            <a href="{{ route('changelog.admin.categories.create') }}" class="btn btn-primary"><i
-                        class="fas fa-plus"></i>
-                {{ trans('messages.actions.add') }}
+            <a href="{{ route('changelog.admin.categories.create') }}" class="btn btn-primary">
+                <i class="bi bi-plus-lg"></i> {{ trans('messages.actions.add') }}
             </a>
 
             @if(! $categories->isEmpty())
                 <button type="button" class="btn btn-success" id="save">
-                    <i class="fas fa-save"></i> {{ trans('messages.actions.save') }}
+                    <i class="bi bi-save"></i> {{ trans('messages.actions.save') }}
                     <span class="spinner-border spinner-border-sm btn-spinner d-none" role="status"></span>
                 </button>
             @endif
@@ -112,10 +103,10 @@
                                 <td>
                                     <a href="{{ route('changelog.admin.updates.edit', $update) }}" class="mx-1"
                                        title="{{ trans('messages.actions.edit') }}" data-toggle="tooltip"><i
-                                                class="fas fa-edit"></i></a>
+                                                class="bi bi-pencil-square"></i></a>
                                     <a href="{{ route('changelog.admin.updates.destroy', $update) }}" class="mx-1"
                                        title="{{ trans('messages.actions.delete') }}" data-toggle="tooltip"
-                                       data-confirm="delete"><i class="fas fa-trash"></i></a>
+                                       data-confirm="delete"><i class="bi bi-trash"></i></a>
                                 </td>
                             </tr>
                         @endforeach
@@ -123,13 +114,15 @@
                         </tbody>
                     </table>
                 </div>
+
                 {{ $updates->links() }}
+
                 <a class="btn btn-primary" href="{{ route('changelog.admin.updates.create') }}">
-                    <i class="fas fa-plus"></i> {{ trans('messages.actions.add') }}
+                    <i class="bi bi-plus-lg"></i> {{ trans('messages.actions.add') }}
                 </a>
             @else
-                <div class="alert alert-danger mb-0">
-                    <i class="fas fa-exclamation-circle pr-2"></i> {{ trans('changelog::admin.categories.nothing') }}
+                <div class="alert alert-warning mb-0">
+                    <i class="bi bi-exclamation-circle"></i> {{ trans('changelog::admin.categories.nothing') }}
                 </div>
             @endif
         </div>

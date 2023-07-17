@@ -1,5 +1,6 @@
 <?php
 
+use Azuriom\Plugin\Changelog\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'CategoryController@index')->name('index');
-Route::resource('categories', 'CategoryController')->only('show');
+Route::get('/', [CategoryController::class, 'index'])->name('index');
+Route::resource('categories', CategoryController::class)->only('show');
