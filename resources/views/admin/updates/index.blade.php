@@ -123,7 +123,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                {{ $updates->links() }}
                 <a class="btn btn-primary" href="{{ route('changelog.admin.updates.create') }}">
                     <i class="fas fa-plus"></i> {{ trans('messages.actions.add') }}
                 </a>
