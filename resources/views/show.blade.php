@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('title', $category->name ?? trans('changelog::messages.title'))
+@section('title', $category->name ?? $title)
 
 @section('content')
-    <h1>{{ $category->name ?? trans('changelog::messages.title') }}</h1>
+    <h1>{{ $category->name ?? $title }}</h1>
 
     <div class="row">
         <div class="col-md-3">
@@ -29,7 +29,7 @@
                 </div>
             @empty
                 <div class="alert alert-warning" role="alert">
-                    {{ trans('changelog::messages.categories.empty') }}
+                    {{ trans('changelog::messages.empty') }}
                 </div>
             @endforelse
 

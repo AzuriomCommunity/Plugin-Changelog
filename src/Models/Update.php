@@ -3,7 +3,11 @@
 namespace Azuriom\Plugin\Changelog\Models;
 
 use Azuriom\Models\Traits\HasTablePrefix;
+use Azuriom\Models\User;
+use Azuriom\Support\Discord\DiscordWebhook;
+use Azuriom\Support\Discord\Embed;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 /**
  * @property int $id
@@ -40,5 +44,18 @@ class Update extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function createDiscordWebhook(User $author): DiscordWebhook
+    {
+        $embed = Embed::create()
+            ->title($this->name)
+            ->author($author->name, null, $author->getAvatar())
+            ->description(Str::limit(strip_tags($this->description), 1995))
+            ->url(route('changelog.categories.show', $this->category))
+            ->footer($this->category->name)
+            ->timestamp(now());
+
+        return DiscordWebhook::create()->addEmbed($embed);
     }
 }

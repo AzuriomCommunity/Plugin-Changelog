@@ -2,10 +2,10 @@
     "id": "changelog",
     "name": "Changelog",
     "description": "Add a changelog to your website.",
-    "version": "1.2.1",
-    "url": "https://azuriom.com/market/resources/53",
+    "version": "1.2.2",
+    "url": "https://market.azuriom.com/resources/53",
     "authors": [
-        "Bryan M."
+        "MrMicky", "Bryan M."
     ],
     "azuriom_api": "1.0.0",
     "providers": [

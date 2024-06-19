@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', trans('changelog::messages.title'))
+@section('title', $title)
 
 @section('content')
     <div class="alert alert-warning" role="alert">

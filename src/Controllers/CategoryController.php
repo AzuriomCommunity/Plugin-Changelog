@@ -16,7 +16,9 @@ class CategoryController extends Controller
     public function index()
     {
         if (! Category::enabled()->exists()) {
-            return view('changelog::index');
+            return view('changelog::index', [
+                'title' => setting('changelog.title', 'Changelog'),
+            ]);
         }
 
         return $this->showCategory();
@@ -33,7 +35,7 @@ class CategoryController extends Controller
         return $this->showCategory($category);
     }
 
-    protected function showCategory(Category $category = null)
+    protected function showCategory(?Category $category = null)
     {
         $categories = Category::enabled()->withCount('updates')->get();
         $updates = $category !== null
@@ -45,6 +47,7 @@ class CategoryController extends Controller
             'updates' => $updates,
             'categories' => $categories,
             'totalUpdates' => Update::count(),
+            'title' => setting('changelog.title', 'Changelog'),
         ]);
     }
 }

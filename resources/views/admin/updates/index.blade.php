@@ -71,19 +71,19 @@
         </div>
     </div>
 
-    <div class="card shadow mb-4">
-        <div class="card-header">
-            <h6 class="m-0 font-weight-bold text-primary">{{ trans('changelog::admin.updates.title') }}</h6>
-        </div>
-        <div class="card-body">
-            @if(! $categories->isEmpty())
+    @if(! $categories->isEmpty())
+        <div class="card shadow mb-4">
+            <div class="card-header">
+                <h6 class="m-0 font-weight-bold text-primary">{{ trans('changelog::admin.updates.title') }}</h6>
+            </div>
+            <div class="card-body">
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">{{ trans('messages.fields.name') }}</th>
-                            <th scope="col">{{ trans('changelog::messages.fields.category') }}</th>
+                            <th scope="col">{{ trans('messages.fields.category') }}</th>
                             <th scope="col">{{ trans('messages.fields.date') }}</th>
                             <th scope="col">{{ trans('messages.fields.action') }}</th>
                         </tr>
@@ -120,11 +120,44 @@
                 <a class="btn btn-primary" href="{{ route('changelog.admin.updates.create') }}">
                     <i class="bi bi-plus-lg"></i> {{ trans('messages.actions.add') }}
                 </a>
-            @else
-                <div class="alert alert-warning mb-0">
-                    <i class="bi bi-exclamation-circle"></i> {{ trans('changelog::admin.categories.nothing') }}
+            </div>
+        </div>
+    @endif
+
+    <div class="card shadow mb-4">
+        <div class="card-header">
+            <h6 class="m-0 font-weight-bold text-primary">
+                {{ trans('admin.nav.settings.settings') }}
+            </h6>
+        </div>
+        <div class="card-body">
+            <form action="{{ route('changelog.admin.settings.update') }}" method="POST">
+                @csrf
+
+                <div class="row gx-3">
+                    <div class="col-md-4 mb-3">
+                        <label class="form-label" for="titleInput">{{ trans('messages.fields.title') }}</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="titleInput" name="title" value="{{ old('title', $title) }}" required>
+
+                        @error('title')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+                    </div>
+
+                    <div class="col-md-8 mb-3">
+                        <label class="form-label" for="webhookInput">{{ trans('changelog::admin.settings.webhook') }}</label>
+                        <input type="text" class="form-control @error('webhook') is-invalid @enderror" id="webhookInput" name="webhook" placeholder="https://discord.com/api/webhooks/.../..." value="{{ old('webhook', $webhook) }}">
+
+                        @error('webhook')
+                        <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
+                        @enderror
+                    </div>
                 </div>
-            @endif
+
+                <button type="submit" class="btn btn-primary">
+                    <i class="bi bi-save"></i> {{ trans('messages.actions.save') }}
+                </button>
+            </form>
         </div>
     </div>
 @endsection

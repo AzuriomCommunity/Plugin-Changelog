@@ -1,7 +1,7 @@
 <div class="list-group mb-3">
     <a href="{{ route('changelog.index') }}"
        class="list-group-item d-flex justify-content-between align-items-center @if($category === null) active @endif">
-        {{ trans('changelog::messages.home')}}
+        {{ trans('changelog::messages.all')}}
         <span class="badge bg-primary">
             {{ $totalUpdates }}
         </span>

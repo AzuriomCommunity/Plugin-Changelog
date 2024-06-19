@@ -21,4 +21,5 @@ Route::middleware('can:changelog.admin')->group(function () {
     Route::resource('updates', UpdateController::class)->except('show');
 
     Route::post('/updates/update-order', [CategoryController::class, 'updateOrder'])->name('categories.update-order');
+    Route::post('/settings', [UpdateController::class, 'updateSettings'])->name('settings.update');
 });

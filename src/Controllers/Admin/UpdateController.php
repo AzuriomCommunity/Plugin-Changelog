@@ -3,9 +3,12 @@
 namespace Azuriom\Plugin\Changelog\Controllers\Admin;
 
 use Azuriom\Http\Controllers\Controller;
+use Azuriom\Models\Setting;
 use Azuriom\Plugin\Changelog\Models\Category;
 use Azuriom\Plugin\Changelog\Models\Update;
 use Azuriom\Plugin\Changelog\Requests\UpdateRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class UpdateController extends Controller
 {
@@ -19,7 +22,25 @@ class UpdateController extends Controller
         $categories = Category::orderBy('position')->get();
         $updates = Update::with(['category'])->paginate();
 
-        return view('changelog::admin.updates.index', ['categories' => $categories, 'updates' => $updates]);
+        return view('changelog::admin.updates.index', [
+            'categories' => $categories,
+            'updates' => $updates,
+            'title' => setting('changelog.title', 'Changelog'),
+            'webhook' => setting('changelog.webhook'),
+        ]);
+    }
+
+    public function updateSettings(Request $request)
+    {
+        $settings = $this->validate($request, [
+            'title' => ['required', 'string', 'max:50'],
+            'webhook' => ['nullable', 'url'],
+        ]);
+
+        Setting::updateSettings(Arr::prependKeysWith($settings, 'changelog.'));
+
+        return redirect()->route('changelog.admin.updates.index')
+            ->with('success', trans('admin.settings.updated'));
     }
 
     /**
@@ -42,7 +63,12 @@ class UpdateController extends Controller
      */
     public function store(UpdateRequest $request)
     {
-        Update::create($request->validated());
+        $user = $request->user();
+        $update = Update::create($request->validated());
+
+        if (($webhookUrl = setting('changelog.webhook')) !== null) {
+            rescue(fn () => $update->createDiscordWebhook($user)->send($webhookUrl));
+        }
 
         return redirect()->route('changelog.admin.updates.index')
             ->with('success', trans('messages.status.success'));

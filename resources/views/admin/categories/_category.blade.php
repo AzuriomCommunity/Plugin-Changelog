@@ -1,6 +1,6 @@
 <li class="sortable-item sortable-dropdown" data-category-id="{{ $category->id }}">
    <div class="card">
-      <div class="card-body d-flex justify-content-between p-2 align-items-center">
+      <div class="card-body d-flex justify-content-between align-items-center">
          <span>
             <i class="bi bi-arrows-move sortable-handle"></i> {{ $category->name }}
          </span>

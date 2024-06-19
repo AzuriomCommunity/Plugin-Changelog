@@ -11,7 +11,9 @@
 </div>
 
 <div class="mb-3">
-    <label class="form-label" for="categorySelect">{{ trans('changelog::messages.fields.category') }}</label>
+    <label class="form-label" for="categorySelect">
+        {{ trans('messages.fields.category') }}
+    </label>
     <select class="form-select @error('category_id') is-invalid @enderror" id="categorySelect" name="category_id" required>
         @foreach($categories as $category)
             <option value="{{ $category->id }}" @if(($update->category_id ?? 0) === $category->id) selected @endif>

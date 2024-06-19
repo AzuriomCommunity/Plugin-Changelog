@@ -3,16 +3,18 @@
 return [
     'title' => 'Changelog',
 
-    'nav' => [
-        'title' => 'Changelog',
+    'settings' => [
+        'webhook' => 'Discord webhook URL',
     ],
+
     'categories' => [
         'title' => 'Categories',
-        'nothing' => 'Please first add categories to add updates.',
         'create' => 'Add category',
         'edit' => 'Edit category',
+
         'updated' => 'Categories order updated.',
     ],
+
     'updates' => [
         'title' => 'Updates',
         'create' => 'Add update',
