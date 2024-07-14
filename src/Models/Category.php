@@ -13,7 +13,6 @@ use Illuminate\Database\Eloquent\Model;
  * @property bool $is_enabled
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @property \Illuminate\Support\Collection|\Azuriom\Plugin\Changelog\Models\Update[] $updates
  *
  * @method static \Illuminate\Database\Eloquent\Builder parents()
@@ -59,7 +58,6 @@ class Category extends Model
     /**
      * Scope a query to only include enabled categories.
      *
-     * @param  \Illuminate\Database\Eloquent\Builder  $query
      * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeEnabled(Builder $query)

@@ -27,7 +27,6 @@ class CategoryController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \Azuriom\Plugin\Changelog\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function show(Category $category)
@@ -39,7 +38,7 @@ class CategoryController extends Controller
     {
         $categories = Category::enabled()->withCount('updates')->get();
         $updates = $category !== null
-            ? $category->updates()->paginate()
+            ? $category->updates()->with('category')->paginate()
             : Update::latest()->with('category')->paginate();
 
         return view('changelog::show', [

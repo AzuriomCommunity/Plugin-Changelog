@@ -58,7 +58,6 @@ class UpdateController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Requests\UpdateRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(UpdateRequest $request)
@@ -77,7 +76,6 @@ class UpdateController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Azuriom\Plugin\Changelog\Models\Update  $update
      * @return \Illuminate\Http\Response
      */
     public function edit(Update $update)
@@ -91,8 +89,6 @@ class UpdateController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Requests\UpdateRequest  $request
-     * @param  \Azuriom\Plugin\Changelog\Models\Update  $update
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, Update $update)
@@ -106,7 +102,6 @@ class UpdateController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Models\Update  $update
      * @return \Illuminate\Http\Response
      *
      * @throws \Exception

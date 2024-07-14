@@ -22,7 +22,6 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Requests\CategoryRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
@@ -36,7 +35,6 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \Azuriom\Plugin\Changelog\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function edit(Category $category)
@@ -47,7 +45,6 @@ class CategoryController extends Controller
     /**
      * Update the order of the resources.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      *
      * @throws \Illuminate\Validation\ValidationException
@@ -78,8 +75,6 @@ class CategoryController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Requests\CategoryRequest  $request
-     * @param  \Azuriom\Plugin\Changelog\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
     public function update(CategoryRequest $request, Category $category)
@@ -93,7 +88,6 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Azuriom\Plugin\Changelog\Models\Category  $category
      * @return \Illuminate\Http\Response
      *
      * @throws \Exception

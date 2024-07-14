@@ -14,7 +14,7 @@ class RouteServiceProvider extends BaseRouteServiceProvider
      */
     public function loadRoutes()
     {
-        // $this->mapApiRoutes();
+        $this->mapApiRoutes();
 
         $this->mapPluginsRoutes();
 
@@ -25,23 +25,23 @@ class RouteServiceProvider extends BaseRouteServiceProvider
     {
         Route::prefix($this->plugin->id)
             ->middleware('web')
-            ->name($this->plugin->id . '.')
-            ->group(plugin_path($this->plugin->id . '/routes/web.php'));
+            ->name($this->plugin->id.'.')
+            ->group(plugin_path($this->plugin->id.'/routes/web.php'));
     }
 
     protected function mapApiRoutes()
     {
-        Route::prefix('api/' . $this->plugin->id)
+        Route::prefix('api/'.$this->plugin->id)
             ->middleware('api')
-            ->name($this->plugin->id . '.')
-            ->group(plugin_path($this->plugin->id . '/routes/api.php'));
+            ->name($this->plugin->id.'.')
+            ->group(plugin_path($this->plugin->id.'/routes/api.php'));
     }
 
     protected function mapAdminRoutes()
     {
-        Route::prefix('admin/' . $this->plugin->id)
+        Route::prefix('admin/'.$this->plugin->id)
             ->middleware('admin-access')
-            ->name($this->plugin->id . '.admin.')
-            ->group(plugin_path($this->plugin->id . '/routes/admin.php'));
+            ->name($this->plugin->id.'.admin.')
+            ->group(plugin_path($this->plugin->id.'/routes/admin.php'));
     }
 }

@@ -16,7 +16,6 @@ use Illuminate\Support\Str;
  * @property string $description
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- *
  * @property \Azuriom\Plugin\Changelog\Models\Category $category
  *
  * @method static \Illuminate\Database\Eloquent\Builder enabled()

@@ -2,9 +2,8 @@
 
 namespace Azuriom\Plugin\Changelog\Providers;
 
-use Azuriom\Models\Permission;
-use Illuminate\Pagination\Paginator;
 use Azuriom\Extensions\Plugin\BasePluginServiceProvider;
+use Azuriom\Models\Permission;
 
 class ChangelogServiceProvider extends BasePluginServiceProvider
 {
