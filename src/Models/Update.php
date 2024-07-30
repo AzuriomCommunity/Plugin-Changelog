@@ -87,6 +87,9 @@ class Update extends Model
         // Convert <hr> to Markdown horizontal rule
         $text = preg_replace('/<hr[^>]*>/i', '---', $text);
     
+        // Convert <br> and <br /> to new lines (\n)
+        $text = preg_replace('/<br\s*\/?>/i', "\n", $text);
+    
         // Remove all remaining HTML tags
         $text = strip_tags($text);
     
